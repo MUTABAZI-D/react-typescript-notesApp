@@ -10,9 +10,14 @@ import { useEffect } from "react";
 type AddNotesProps = {
   userToEdit: NotesProps | null;
   setUserToEdit: React.Dispatch<React.SetStateAction<NotesProps | null>>;
+  formRef: React.RefObject<HTMLFormElement>;
 };
 
-export const AddNotes = ({ userToEdit, setUserToEdit }: AddNotesProps) => {
+export const AddNotes = ({
+  userToEdit,
+  setUserToEdit,
+  formRef,
+}: AddNotesProps) => {
   const defaultValues = {
     title: "",
     body: "",
@@ -47,8 +52,9 @@ export const AddNotes = ({ userToEdit, setUserToEdit }: AddNotesProps) => {
   };
   return (
     <Box
+      ref={formRef}
       sx={{
-        width: { xs: "100%", sm: "80%", md: "60%", lg: "50%" },
+        width: { xs: "85%", sm: "80%", md: "60%", lg: "50%" },
         paddingTop: "80px",
         marginLeft: "50px",
       }}

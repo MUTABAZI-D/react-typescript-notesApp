@@ -14,9 +14,15 @@ type NotesActionProps = {
   id: number;
   onEdit: (id: number) => void;
   userToEdit: NotesProps | null;
+  formRef: React.RefObject<HTMLFormElement>;
 };
 
-export const NotesAction = ({ id, onEdit, userToEdit }: NotesActionProps) => {
+export const NotesAction = ({
+  id,
+  onEdit,
+  userToEdit,
+  formRef,
+}: NotesActionProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -26,6 +32,7 @@ export const NotesAction = ({ id, onEdit, userToEdit }: NotesActionProps) => {
     setAnchorEl(null);
   };
   const handleEdit = () => {
+    formRef.current?.scrollIntoView({ behavior: "smooth" });
     onEdit(id);
     handleClose();
   };

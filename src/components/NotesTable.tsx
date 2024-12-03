@@ -21,6 +21,7 @@ type NotesTableProps = {
   setUserToEdit: React.Dispatch<React.SetStateAction<NotesProps | null>>;
   sortedNotes: NotesProps[] | null;
   query: string;
+  formRef: React.RefObject<HTMLFormElement>;
 };
 
 export const NotesTable = ({
@@ -28,6 +29,7 @@ export const NotesTable = ({
   setUserToEdit,
   sortedNotes,
   query,
+  formRef,
 }: NotesTableProps) => {
   const notes = useSelector(noteSelector);
   const sortNotes = sortedNotes ? [...sortedNotes] : [...notes];
@@ -103,6 +105,7 @@ export const NotesTable = ({
                   >
                     {note.body}
                     <NotesAction
+                      formRef={formRef}
                       id={note.id}
                       onEdit={onEdit}
                       userToEdit={userToEdit}
