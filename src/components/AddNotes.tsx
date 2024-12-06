@@ -56,7 +56,7 @@ export const AddNotes = ({
       sx={{
         width: { xs: "85%", sm: "80%", md: "60%", lg: "50%" },
         paddingTop: "80px",
-        marginLeft: "50px",
+        marginLeft: { xs: "35px", md: "50px" },
       }}
     >
       <Typography
